@@ -1,458 +1,1066 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
+    <!-- ================= BASIC META ================= -->
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>W.Tracer - To-Do List</title>
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        http-equiv="X-UA-Compatible"
+        content="IE=edge"
+    >
+
+    <title>
+        W.Tracer - Smart To-Do List & Task Manager
+    </title>
+
+    <meta
+        name="description"
+        content="W.Tracer is a simple and smart to-do list and task management app for organizing tasks, priorities, due dates, and daily work."
+    >
+
+    <meta
+        name="keywords"
+        content="W.Tracer, to-do list, todo app, task manager, task tracker, productivity app, task management, daily tasks, priority tasks, work tracker"
+    >
+
+    <meta
+        name="author"
+        content="Ajay Mandal"
+    >
+
+    <meta
+        name="robots"
+        content="index, follow"
+    >
+
+    <meta
+        name="googlebot"
+        content="index, follow"
+    >
+
+    <meta
+        name="theme-color"
+        content="#667eea"
+    >
+
+    <meta
+        name="color-scheme"
+        content="light"
+    >
+
+
+    <!-- ================= CANONICAL ================= -->
+
+    <!-- Replace with your real website URL when deployed -->
+    <link
+        rel="canonical"
+        href="https://yourdomain.com/"
+    >
+
+
+    <!-- ================= OPEN GRAPH ================= -->
+
+    <meta
+        property="og:type"
+        content="website"
+    >
+
+    <meta
+        property="og:title"
+        content="W.Tracer - Smart To-Do List & Task Manager"
+    >
+
+    <meta
+        property="og:description"
+        content="Organize your work, manage priorities, track due dates, and complete tasks with W.Tracer."
+    >
+
+    <meta
+        property="og:site_name"
+        content="W.Tracer"
+    >
+
+    <meta
+        property="og:url"
+        content="https://yourdomain.com/"
+    >
+
+    <!-- Add your social preview image after creating one -->
+    <meta
+        property="og:image"
+        content="https://yourdomain.com/og-image.jpg"
+    >
+
+
+    <!-- ================= TWITTER / X ================= -->
+
+    <meta
+        name="twitter:card"
+        content="summary_large_image"
+    >
+
+    <meta
+        name="twitter:title"
+        content="W.Tracer - Smart To-Do List & Task Manager"
+    >
+
+    <meta
+        name="twitter:description"
+        content="A simple task management app to organize work, priorities, and deadlines."
+    >
+
+    <meta
+        name="twitter:image"
+        content="https://yourdomain.com/og-image.jpg"
+    >
+
+
+    <!-- ================= FAVICON ================= -->
+
+    <link
+        rel="icon"
+        href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='46' fill='%23667eea'/%3E%3Cpath d='M25 30 L35 70 L50 48 L65 70 L75 30' fill='none' stroke='white' stroke-width='8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"
+    >
+
+
+    <!-- ================= STYLES ================= -->
 
     <style>
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+
+            font-family:
+                'Segoe UI',
+                Tahoma,
+                Geneva,
+                Verdana,
+                sans-serif;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #667eea 0%,
+                    #764ba2 100%
+                );
+
             min-height: 100vh;
+
             padding: 20px;
         }
 
+
+        /* ================= CONTAINER ================= */
+
         .container {
+
             max-width: 1200px;
+
             margin: 0 auto;
-            background: rgba(255, 255, 255, 0.95);
+
+            background:
+                rgba(255, 255, 255, 0.95);
+
             border-radius: 20px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+
+            box-shadow:
+                0 20px 40px
+                rgba(0, 0, 0, 0.1);
+
             overflow: hidden;
         }
+
 
         /* ================= HEADER ================= */
 
         .header {
-            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #4facfe 0%,
+                    #00f2fe 100%
+                );
+
             color: white;
+
             text-align: center;
+
             padding: 30px 20px;
         }
 
-        /* Logo + Title */
+
+        /*
+            W.TRACER BRAND
+            Logo is now INSIDE the title.
+        */
+
         .brand {
-            display: flex;
-            justify-content: center;
+
+            display: inline-flex;
+
             align-items: center;
-            gap: 12px;
+
+            justify-content: center;
+
+            gap: 10px;
+
             margin-bottom: 10px;
+
+            position: relative;
         }
 
-        .logo {
-            width: 52px;
-            height: 52px;
-            border-radius: 50%;
-            background: white;
+
+        /* ================= LOGO ================= */
+
+        .brand-logo {
+
+            width: 48px;
+
+            height: 48px;
+
+            min-width: 48px;
+
+            border-radius: 14px;
+
+            background:
+                rgba(255, 255, 255, 0.95);
+
             display: flex;
-            justify-content: center;
+
             align-items: center;
-            font-size: 28px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-            animation: logoFloat 3s ease-in-out infinite;
+
+            justify-content: center;
+
+            box-shadow:
+                0 6px 18px
+                rgba(0, 0, 0, 0.18);
+
+            position: relative;
+
+            overflow: hidden;
+
+            transform: rotate(-3deg);
+
+            transition:
+                transform 0.3s ease,
+                box-shadow 0.3s ease;
         }
+
+
+        .brand:hover .brand-logo {
+
+            transform:
+                rotate(0deg)
+                scale(1.06);
+
+            box-shadow:
+                0 8px 25px
+                rgba(0, 0, 0, 0.25);
+        }
+
+
+        /*
+            Custom W logo
+        */
+
+        .brand-logo svg {
+
+            width: 34px;
+
+            height: 34px;
+        }
+
+
+        /* ================= TITLE ================= */
 
         .brand h1 {
+
             font-size: 2.5rem;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+
+            line-height: 1;
+
+            font-weight: 700;
+
+            letter-spacing: -1px;
+
+            text-shadow:
+                0 2px 4px
+                rgba(0, 0, 0, 0.3);
         }
 
-        @keyframes logoFloat {
-            0%, 100% {
-                transform: translateY(0);
-            }
 
-            50% {
-                transform: translateY(-4px);
-            }
+        .brand h1 span {
+
+            font-weight: 400;
+
+            opacity: 0.95;
         }
+
 
         .header p {
+
             font-size: 1.1rem;
+
             opacity: 0.9;
+
+            margin-top: 4px;
         }
+
 
         /* ================= CONTROLS ================= */
 
         .controls {
+
             display: flex;
+
             justify-content: space-between;
+
             align-items: center;
+
             padding: 20px 30px;
+
             background: #f8f9fa;
-            border-bottom: 1px solid #e9ecef;
+
+            border-bottom:
+                1px solid #e9ecef;
+
             flex-wrap: wrap;
+
             gap: 15px;
         }
+
 
         .sort-filter {
+
             display: flex;
+
             gap: 15px;
+
             align-items: center;
         }
 
+
         .control-group {
+
             display: flex;
+
             flex-direction: column;
+
             gap: 5px;
         }
 
+
         .control-group label {
+
             font-weight: 600;
+
             color: #495057;
+
             font-size: 0.9rem;
         }
+
 
         select,
         input[type="text"],
         input[type="date"] {
+
             padding: 10px 15px;
-            border: 2px solid #e9ecef;
+
+            border:
+                2px solid #e9ecef;
+
             border-radius: 10px;
+
             font-size: 1rem;
-            transition: all 0.3s ease;
+
+            transition:
+                all 0.3s ease;
+
             min-width: 150px;
         }
+
 
         select:focus,
         input:focus,
         textarea:focus {
+
             outline: none;
+
             border-color: #4facfe;
-            box-shadow: 0 0 0 3px rgba(79, 172, 254, 0.1);
+
+            box-shadow:
+                0 0 0 3px
+                rgba(79, 172, 254, 0.1);
         }
+
 
         /* ================= MAIN CONTENT ================= */
 
         .main-content {
+
             padding: 30px;
+
             display: grid;
-            grid-template-columns: 1fr 2fr;
+
+            grid-template-columns:
+                1fr 2fr;
+
             gap: 30px;
+
             min-height: 600px;
         }
+
 
         /* ================= ADD TASK ================= */
 
         .add-task-section {
-            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #a8edea 0%,
+                    #fed6e3 100%
+                );
+
             border-radius: 15px;
+
             padding: 25px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+
+            box-shadow:
+                0 10px 25px
+                rgba(0, 0, 0, 0.1);
         }
 
+
         .add-task-section h2 {
+
             color: #2c3e50;
+
             margin-bottom: 20px;
+
             font-size: 1.5rem;
         }
 
+
         .task-form {
+
             display: flex;
+
             flex-direction: column;
+
             gap: 15px;
         }
 
+
         .task-form textarea {
+
             resize: vertical;
+
             padding: 12px;
+
+            border:
+                2px solid #e9ecef;
+
             border-radius: 10px;
-            border: 2px solid #e9ecef;
+
             font-family: inherit;
+
             font-size: 1rem;
         }
+
 
         .priority-select {
+
             padding: 12px;
+
             border-radius: 10px;
-            border: 2px solid #e9ecef;
+
+            border:
+                2px solid #e9ecef;
+
             font-size: 1rem;
         }
 
+
+        /* ================= ADD BUTTON ================= */
+
         .add-btn {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #667eea 0%,
+                    #764ba2 100%
+                );
+
             color: white;
+
             border: none;
+
             padding: 15px 25px;
+
             border-radius: 10px;
+
             font-size: 1.1rem;
+
             font-weight: 600;
+
             cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+
+            transition:
+                all 0.3s ease;
+
+            box-shadow:
+                0 5px 15px
+                rgba(102, 126, 234, 0.4);
         }
+
 
         .add-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.6);
+
+            transform:
+                translateY(-2px);
+
+            box-shadow:
+                0 8px 25px
+                rgba(102, 126, 234, 0.6);
         }
 
-        /* ================= STATS ================= */
-
-        .stats {
-            display: flex;
-            justify-content: space-around;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 20px;
-            margin-top: 20px;
-            border-radius: 10px;
-        }
-
-        .stat-item {
-            text-align: center;
-        }
-
-        .stat-number {
-            font-size: 2rem;
-            font-weight: bold;
-            display: block;
-        }
-
-        .stat-label {
-            font-size: 0.9rem;
-            opacity: 0.9;
-        }
 
         /* ================= TASK SECTION ================= */
 
         .tasks-section {
+
             background: #ffffff;
+
             border-radius: 15px;
+
             padding: 25px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+
+            box-shadow:
+                0 10px 25px
+                rgba(0, 0, 0, 0.05);
         }
 
+
         .tasks-section h2 {
+
             color: #2c3e50;
+
             margin-bottom: 20px;
+
             font-size: 1.5rem;
         }
 
+
+        /* ================= TASK ITEM ================= */
+
         .task-item {
-            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #ffecd2 0%,
+                    #fcb69f 100%
+                );
+
             border-radius: 12px;
+
             padding: 20px;
+
             margin-bottom: 15px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-            transition: all 0.3s ease;
+
+            box-shadow:
+                0 5px 15px
+                rgba(0, 0, 0, 0.08);
+
+            transition:
+                all 0.3s ease;
+
             border-left: 5px solid;
         }
 
+
         .task-item:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+
+            transform:
+                translateY(-3px);
+
+            box-shadow:
+                0 10px 30px
+                rgba(0, 0, 0, 0.15);
         }
+
 
         .task-item.high {
+
             border-left-color: #e74c3c;
-            background: linear-gradient(135deg, #ffcccb 0%, #ffb3ba 100%);
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #ffcccb 0%,
+                    #ffb3ba 100%
+                );
         }
+
 
         .task-item.medium {
+
             border-left-color: #f39c12;
-            background: linear-gradient(135deg, #ffe4b5 0%, #ffd700 100%);
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #ffe4b5 0%,
+                    #ffd700 100%
+                );
         }
+
 
         .task-item.low {
+
             border-left-color: #27ae60;
-            background: linear-gradient(135deg, #c8e6c9 0%, #a5d6a7 100%);
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #c8e6c9 0%,
+                    #a5d6a7 100%
+                );
         }
 
+
         .task-header {
+
             display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
+
+            justify-content:
+                space-between;
+
+            align-items:
+                flex-start;
+
             margin-bottom: 10px;
+
             gap: 15px;
         }
 
+
         .task-title {
+
             font-size: 1.2rem;
+
             font-weight: 600;
+
             color: #2c3e50;
+
             flex: 1;
         }
 
+
         .task-actions {
+
             display: flex;
+
             gap: 10px;
         }
+
 
         .task-btn {
+
             padding: 8px 12px;
+
             border: none;
+
             border-radius: 6px;
+
             cursor: pointer;
+
             font-size: 0.9rem;
+
             font-weight: 500;
-            transition: all 0.3s ease;
+
+            transition:
+                all 0.3s ease;
         }
+
 
         .complete-btn {
+
             background: #27ae60;
+
             color: white;
         }
+
 
         .complete-btn:hover {
+
             background: #219a52;
-            transform: scale(1.05);
+
+            transform:
+                scale(1.05);
         }
 
+
         .delete-btn {
+
             background: #e74c3c;
+
             color: white;
         }
 
+
         .delete-btn:hover {
+
             background: #c0392b;
-            transform: scale(1.05);
+
+            transform:
+                scale(1.05);
         }
 
+
+        /* ================= TASK META ================= */
+
         .task-meta {
+
             display: flex;
-            justify-content: space-between;
-            align-items: center;
+
+            justify-content:
+                space-between;
+
+            align-items:
+                center;
+
             margin-top: 10px;
+
             font-size: 0.9rem;
+
             color: #7f8c8d;
+
             gap: 10px;
         }
 
+
         .priority-badge {
+
             padding: 4px 12px;
+
             border-radius: 20px;
+
             color: white;
+
             font-weight: 600;
+
             font-size: 0.8rem;
         }
 
+
         .priority-badge.high {
+
             background: #e74c3c;
         }
 
+
         .priority-badge.medium {
+
             background: #f39c12;
         }
 
+
         .priority-badge.low {
+
             background: #27ae60;
         }
 
+
         .task-item.completed {
+
             opacity: 0.7;
-            text-decoration: line-through;
+
+            text-decoration:
+                line-through;
         }
 
+
+        /* ================= EMPTY TASK ================= */
+
         .no-tasks {
+
             text-align: center;
+
             color: #7f8c8d;
+
             font-size: 1.1rem;
+
             margin-top: 50px;
         }
 
-        /* ================= RESPONSIVE ================= */
+
+        /* ================= STATS ================= */
+
+        .stats {
+
+            display: flex;
+
+            justify-content:
+                space-around;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #667eea 0%,
+                    #764ba2 100%
+                );
+
+            color: white;
+
+            padding: 20px;
+
+            margin-top: 20px;
+
+            border-radius: 10px;
+        }
+
+
+        .stat-item {
+
+            text-align: center;
+        }
+
+
+        .stat-number {
+
+            font-size: 2rem;
+
+            font-weight: bold;
+
+            display: block;
+        }
+
+
+        .stat-label {
+
+            font-size: 0.9rem;
+
+            opacity: 0.9;
+        }
+
+
+        /* ================= MOBILE ================= */
 
         @media (max-width: 768px) {
 
             body {
+
                 padding: 10px;
             }
 
+
             .main-content {
+
                 grid-template-columns: 1fr;
+
                 gap: 20px;
+
                 padding: 20px;
             }
 
+
             .controls {
+
                 flex-direction: column;
+
                 align-items: stretch;
             }
+
 
             .sort-filter {
+
                 flex-direction: column;
+
                 align-items: stretch;
             }
 
-            .header h1,
+
             .brand h1 {
+
                 font-size: 2rem;
             }
 
-            .logo {
-                width: 45px;
-                height: 45px;
-                font-size: 24px;
+
+            .brand-logo {
+
+                width: 42px;
+
+                height: 42px;
+
+                min-width: 42px;
             }
 
+
+            .brand-logo svg {
+
+                width: 29px;
+
+                height: 29px;
+            }
+
+
             .task-header {
+
                 flex-direction: column;
             }
 
+
             .task-actions {
+
                 width: 100%;
             }
 
+
             .task-btn {
+
                 flex: 1;
             }
 
+
             .task-meta {
+
                 flex-direction: column;
+
                 align-items: flex-start;
             }
+
         }
+
     </style>
+
 </head>
+
 
 <body>
 
     <div class="container">
 
+
         <!-- ================= HEADER ================= -->
 
-        <div class="header">
+        <header class="header">
 
             <div class="brand">
 
-                <!-- LOGO -->
-                <div class="logo">
-                    ✓
+                <!-- W.TRACER LOGO -->
+
+                <div
+                    class="brand-logo"
+                    aria-label="W.Tracer logo"
+                >
+
+                    <svg
+                        viewBox="0 0 100 100"
+                        xmlns="http://www.w3.org/2000/svg"
+                        aria-hidden="true"
+                    >
+
+                        <!-- W symbol -->
+
+                        <path
+                            d="
+                                M18 25
+                                L30 72
+                                L50 45
+                                L70 72
+                                L82 25
+                            "
+                            fill="none"
+                            stroke="#667eea"
+                            stroke-width="10"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                        />
+
+                        <!-- Small tracking dot -->
+
+                        <circle
+                            cx="82"
+                            cy="25"
+                            r="6"
+                            fill="#00c6ff"
+                        />
+
+                    </svg>
+
                 </div>
 
+
                 <!-- TITLE -->
-                <h1>W.Tracer</h1>
+
+                <h1>
+                    W<span>.Tracer</span>
+                </h1>
 
             </div>
 
-            <p>Tracking work with style and priority</p>
 
-        </div>
+            <p>
+                Tracking work with style and priority
+            </p>
+
+        </header>
+
 
         <!-- ================= CONTROLS ================= -->
 
-        <div class="controls">
+        <section class="controls">
 
             <div class="sort-filter">
 
+
                 <div class="control-group">
-                    <label for="sortBy">Sort By:</label>
+
+                    <label for="sortBy">
+                        Sort By:
+                    </label>
 
                     <select id="sortBy">
-                        <option value="date">Date Added</option>
-                        <option value="priority">Priority</option>
-                        <option value="title">Title</option>
-                        <option value="dueDate">Due Date</option>
+
+                        <option value="date">
+                            Date Added
+                        </option>
+
+                        <option value="priority">
+                            Priority
+                        </option>
+
+                        <option value="title">
+                            Title
+                        </option>
+
+                        <option value="dueDate">
+                            Due Date
+                        </option>
+
                     </select>
+
                 </div>
+
 
                 <div class="control-group">
 
@@ -482,34 +1090,44 @@
 
                 </div>
 
+
             </div>
 
-        </div>
+        </section>
+
 
         <!-- ================= MAIN CONTENT ================= -->
 
-        <div class="main-content">
+        <main class="main-content">
 
-            <!-- ADD TASK -->
 
-            <div class="add-task-section">
+            <!-- ================= ADD TASK ================= -->
 
-                <h2>✨ Add New Task</h2>
+            <section class="add-task-section">
+
+                <h2>
+                    ✨ Add New Task
+                </h2>
+
 
                 <div class="task-form">
+
 
                     <input
                         type="text"
                         id="taskTitle"
                         placeholder="Enter task title..."
                         maxlength="100"
+                        autocomplete="off"
                     >
+
 
                     <textarea
                         id="taskDescription"
                         placeholder="Task description (optional)..."
                         rows="3"
                     ></textarea>
+
 
                     <select
                         id="taskPriority"
@@ -530,24 +1148,30 @@
 
                     </select>
 
+
                     <input
                         type="date"
                         id="taskDueDate"
-                        style="padding: 12px;"
                     >
+
 
                     <button
                         class="add-btn"
                         onclick="addTask()"
                     >
+
                         ➕ Add Task
+
                     </button>
+
 
                 </div>
 
-                <!-- STATS -->
+
+                <!-- ================= STATS ================= -->
 
                 <div class="stats">
+
 
                     <div class="stat-item">
 
@@ -564,6 +1188,7 @@
 
                     </div>
 
+
                     <div class="stat-item">
 
                         <span
@@ -578,6 +1203,7 @@
                         </span>
 
                     </div>
+
 
                     <div class="stat-item">
 
@@ -594,28 +1220,37 @@
 
                     </div>
 
+
                 </div>
 
-            </div>
+            </section>
 
-            <!-- TASKS -->
 
-            <div class="tasks-section">
+            <!-- ================= TASK LIST ================= -->
 
-                <h2>📋 Your Tasks</h2>
+            <section class="tasks-section">
+
+                <h2>
+                    📋 Your Tasks
+                </h2>
+
 
                 <div id="tasksList">
 
                     <div class="no-tasks">
+
                         No tasks yet.
                         Add your first task to get started! 🚀
+
                     </div>
 
                 </div>
 
-            </div>
+            </section>
 
-        </div>
+
+        </main>
+
 
     </div>
 
@@ -630,15 +1265,22 @@
 
                 this.tasks =
                     JSON.parse(
-                        localStorage.getItem('todoTasks')
+                        localStorage.getItem(
+                            'todoTasks'
+                        )
                     ) || [];
+
 
                 this.currentId =
                     parseInt(
-                        localStorage.getItem('todoCurrentId')
+                        localStorage.getItem(
+                            'todoCurrentId'
+                        )
                     ) || 1;
 
+
                 this.init();
+
             }
 
 
@@ -732,13 +1374,13 @@
 
                     id: this.currentId++,
 
-                    title,
+                    title: title,
 
-                    description,
+                    description: description,
 
-                    priority,
+                    priority: priority,
 
-                    dueDate,
+                    dueDate: dueDate,
 
                     completed: false,
 
@@ -780,15 +1422,14 @@
 
                     this.tasks =
                         this.tasks.filter(
-                            task => task.id !== id
+                            task =>
+                                task.id !== id
                         );
 
 
                     this.saveToStorage();
 
-
                     this.renderTasks();
-
 
                     this.updateStats();
 
@@ -818,9 +1459,7 @@
 
                     this.saveToStorage();
 
-
                     this.renderTasks();
-
 
                     this.updateStats();
 
@@ -839,22 +1478,30 @@
             clearForm() {
 
                 document
-                    .getElementById('taskTitle')
+                    .getElementById(
+                        'taskTitle'
+                    )
                     .value = '';
 
 
                 document
-                    .getElementById('taskDescription')
+                    .getElementById(
+                        'taskDescription'
+                    )
                     .value = '';
 
 
                 document
-                    .getElementById('taskPriority')
+                    .getElementById(
+                        'taskPriority'
+                    )
                     .value = 'medium';
 
 
                 document
-                    .getElementById('taskDueDate')
+                    .getElementById(
+                        'taskDueDate'
+                    )
                     .value = '';
 
             }
@@ -868,7 +1515,9 @@
 
                 const priorityFilter =
                     document
-                        .getElementById('filterPriority')
+                        .getElementById(
+                            'filterPriority'
+                        )
                         .value;
 
 
@@ -888,7 +1537,9 @@
 
                 const sortBy =
                     document
-                        .getElementById('sortBy')
+                        .getElementById(
+                            'sortBy'
+                        )
                         .value;
 
 
@@ -897,17 +1548,27 @@
 
                         switch (sortBy) {
 
+
                             case 'priority':
 
                                 const priorityOrder = {
+
                                     high: 3,
+
                                     medium: 2,
+
                                     low: 1
+
                                 };
 
+
                                 return (
-                                    priorityOrder[b.priority] -
-                                    priorityOrder[a.priority]
+                                    priorityOrder[
+                                        b.priority
+                                    ] -
+                                    priorityOrder[
+                                        a.priority
+                                    ]
                                 );
 
 
@@ -924,20 +1585,33 @@
                                     !a.dueDate &&
                                     !b.dueDate
                                 ) {
+
                                     return 0;
+
                                 }
+
 
                                 if (!a.dueDate) {
+
                                     return 1;
+
                                 }
+
 
                                 if (!b.dueDate) {
+
                                     return -1;
+
                                 }
 
+
                                 return (
-                                    new Date(a.dueDate) -
-                                    new Date(b.dueDate)
+                                    new Date(
+                                        a.dueDate
+                                    ) -
+                                    new Date(
+                                        b.dueDate
+                                    )
                                 );
 
 
@@ -946,8 +1620,12 @@
                             default:
 
                                 return (
-                                    new Date(b.createdAt) -
-                                    new Date(a.createdAt)
+                                    new Date(
+                                        b.createdAt
+                                    ) -
+                                    new Date(
+                                        a.createdAt
+                                    )
                                 );
 
                         }
@@ -976,8 +1654,11 @@
                 if (tasks.length === 0) {
 
                     tasksList.innerHTML =
+
                         '<div class="no-tasks">' +
+
                         'No tasks match your current filters. 🔍' +
+
                         '</div>';
 
                     return;
@@ -986,13 +1667,18 @@
 
 
                 tasksList.innerHTML =
+
                     tasks.map(task => `
 
-                        <div class="task-item
+                        <div
+                            class="task-item
                             ${task.priority}
-                            ${task.completed ? 'completed' : ''}">
+                            ${task.completed ? 'completed' : ''}"
+                        >
+
 
                             <div class="task-header">
+
 
                                 <div class="task-title">
 
@@ -1004,6 +1690,7 @@
 
 
                                 <div class="task-actions">
+
 
                                     <button
                                         class="task-btn complete-btn"
@@ -1028,29 +1715,40 @@
 
                                     </button>
 
+
                                 </div>
+
 
                             </div>
 
 
                             ${
                                 task.description
+
                                     ? `
-                                        <div style="
-                                            color:#666;
-                                            margin:10px 0;
-                                            font-style:italic;
-                                        ">
+
+                                        <div
+                                            style="
+                                                color:#666;
+                                                margin:10px 0;
+                                                font-style:italic;
+                                            "
+                                        >
+
                                             ${this.escapeHtml(
                                                 task.description
                                             )}
+
                                         </div>
+
                                     `
+
                                     : ''
                             }
 
 
                             <div class="task-meta">
+
 
                                 <span
                                     class="priority-badge ${task.priority}"
@@ -1065,11 +1763,15 @@
 
                                     ${
                                         task.dueDate
-                                            ? `📅 Due: ${this.formatDate(
-                                                task.dueDate
-                                            )}`
+
+                                            ? `📅 Due:
+                                                ${this.formatDate(
+                                                    task.dueDate
+                                                )}`
+
                                             : ''
                                     }
+
 
                                     ${
                                         task.dueDate
@@ -1077,14 +1779,18 @@
                                             : ''
                                     }
 
+
                                     Created:
                                     ${this.formatDate(
-                                        task.createdAt.split('T')[0]
+                                        task.createdAt
+                                            .split('T')[0]
                                     )}
 
                                 </span>
 
+
                             </div>
+
 
                         </div>
 
@@ -1110,17 +1816,23 @@
 
 
                 document
-                    .getElementById('totalTasks')
+                    .getElementById(
+                        'totalTasks'
+                    )
                     .textContent = total;
 
 
                 document
-                    .getElementById('completedTasks')
+                    .getElementById(
+                        'completedTasks'
+                    )
                     .textContent = completed;
 
 
                 document
-                    .getElementById('pendingTasks')
+                    .getElementById(
+                        'pendingTasks'
+                    )
                     .textContent = pending;
 
             }
@@ -1129,12 +1841,16 @@
             formatDate(dateString) {
 
                 if (!dateString) {
+
                     return '';
+
                 }
 
 
                 const date =
-                    new Date(dateString);
+                    new Date(
+                        dateString
+                    );
 
 
                 return date.toLocaleDateString(
@@ -1152,7 +1868,9 @@
             escapeHtml(text) {
 
                 const div =
-                    document.createElement('div');
+                    document.createElement(
+                        'div'
+                    );
 
 
                 div.textContent = text;
@@ -1166,7 +1884,9 @@
             showFeedback(message) {
 
                 const notification =
-                    document.createElement('div');
+                    document.createElement(
+                        'div'
+                    );
 
 
                 notification.style.cssText = `
@@ -1188,7 +1908,8 @@
                     z-index: 1000;
 
                     box-shadow:
-                        0 5px 15px rgba(0,0,0,0.3);
+                        0 5px 15px
+                        rgba(0,0,0,0.3);
 
                     transform:
                         translateX(400px);
@@ -1210,8 +1931,10 @@
 
                 setTimeout(
                     () => {
+
                         notification.style.transform =
                             'translateX(0)';
+
                     },
                     100
                 );
@@ -1225,7 +1948,8 @@
 
 
                         setTimeout(
-                            () => notification.remove(),
+                            () =>
+                                notification.remove(),
                             300
                         );
 
@@ -1240,7 +1964,9 @@
 
                 localStorage.setItem(
                     'todoTasks',
-                    JSON.stringify(this.tasks)
+                    JSON.stringify(
+                        this.tasks
+                    )
                 );
 
 
@@ -1254,13 +1980,13 @@
         }
 
 
-        // Initialize application
+        /* ================= INITIALIZE ================= */
 
         const todoApp =
             new TodoApp();
 
 
-        // Global function
+        /* ================= GLOBAL ADD FUNCTION ================= */
 
         function addTask() {
 
@@ -1271,4 +1997,6 @@
     </script>
 
 </body>
+
 </html>
+```
